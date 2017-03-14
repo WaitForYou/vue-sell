@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
     <div class="tab border-1px">
     	<div class="tab-item">
     		<router-link to="/goods" >商品</router-link>
@@ -18,26 +18,30 @@
 
 <script type="text/ecamscript-6">
 	import header from './components/header/header'
-	
-	const ERR_OK = 0;
+  
+  const ERR_OK = 0;
 
-	export default {
-		data(){
-			return {
-				seller: {}
-			}
-		},
-		created(){
-			this.$http('/api/seller').then((response) => {
-				console.log(response)
-			}, response => {
-				//error callback
-			});
-		},
-		components: {
-			'v-header': header
-		}
-	}
+
+
+  export default {
+    data(){
+      return {
+        seller: {}
+      }
+    },
+    created(){
+      this.$http.get('/api/seller').then(response => {
+        response = response.body;
+        if(response.errno === ERR_OK){
+          this.seller = Object.assign({}, this.seller, response.data)
+        }
+      });
+    },
+    components: {
+      'v-header': header
+    }
+  }
+
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
