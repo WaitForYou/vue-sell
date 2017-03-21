@@ -147,6 +147,7 @@
     width: 100%
     height: 48px
     background: #000
+    z-index: 44
     .content
       display: flex
       background: #141d27
