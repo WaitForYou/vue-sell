@@ -1,7 +1,7 @@
 <template>
   <div class="helmet">
     <div ref="js-mask-wraper" class="mask-wraper">
-        <div ref="wicket" class="cover-bg" :style="{backgroundImage:'url(' + defaultUrl +')'}"></div>
+        <div ref="wicket" class="cover-bg" :style="{backgroundImage:'url(' + this.defaultUrl +  this.actDetail.activityImg +')'}"></div>
         <div ref="mover" class="act-msg" style="background-color:transparent;">
             <div ref="vote-title" class="vote-title">{{actDetail.activityName}}</div>
             <div red="vote-detail" class="vote-group">{{actDetail.groupName}}</div>     
@@ -62,4 +62,8 @@ export default {
                 line-height: 50px
                 background-color: rgba(0, 0, 0, .4)
                 padding: 0
+    .cover-bg
+        height: 100%
+        background-repeat: no-repeat
+        background-size: 100%
 </style>

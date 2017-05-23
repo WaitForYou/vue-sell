@@ -14,7 +14,10 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 
 const routes = [{
-    path: '/',
+    path: '/:id/:userId',
+    component: detail
+}, {
+    path: '/:id',
     component: detail
 }];
 
